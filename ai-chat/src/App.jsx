@@ -33,9 +33,7 @@ export default function App() {
       })
 
       const data = await res.json()
-
       if (!res.ok) throw new Error(data.error || "Неизвестная ошибка")
-
       setMessages([...newMessages, { role: "assistant", content: data.reply }])
     } catch (err) {
       setError(err.message || "Ошибка при получении ответа. Попробуйте снова.")
@@ -45,22 +43,30 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f0faf4] flex flex-col justify-between p-10">
+    <div className="min-h-screen bg-[#0d2a5e] flex flex-col justify-between p-10">
       <div>
+        <div className="bg-[#1a3a7c] w-12 h-12 rounded-2xl flex items-center justify-center mb-10 shadow-sm">
+          <span className="text-white text-xl">💬</span>
+        </div>
+
         {messages.length === 0 && !isLoading && (
           <div>
-            <h1 className="text-[#1b4332] text-4xl font-bold mb-4 leading-snug">
-              О чём хочешь<br />поговорить?
+            <h2 className="text-white text-2xl font-bold mb-4 leading-snug">Hi there!</h2>
+            <h1 className="text-white text-4xl font-bold mb-4 leading-snug">
+              What would you like<br />to know?
             </h1>
+            <p className="text-[#5a8fd4] text-base leading-relaxed">
+              Use one of the most common prompts below<br />
+              or ask your own question
+            </p>
           </div>
         )}
 
         {messages.length > 0 && <ChatHistory messages={messages} />}
-
         {isLoading && <ChatResponse isLoading={true} />}
 
         {error && (
-          <div className="mt-3 px-4 py-3 bg-red-50 border border-red-200 rounded-2xl text-red-500 text-sm">
+          <div className="mt-3 px-4 py-3 bg-red-900/30 border border-red-500/30 rounded-2xl text-red-300 text-sm">
             {error}
           </div>
         )}

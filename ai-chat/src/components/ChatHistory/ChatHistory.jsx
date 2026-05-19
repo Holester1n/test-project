@@ -9,8 +9,8 @@ export default function ChatHistory({ messages }) {
           <div
             className={`px-4 py-3 rounded-3xl text-[16px] max-w-[75%] leading-relaxed shadow-sm ${
               msg.role === "user"
-                ? "bg-[#52b788] text-white rounded-br-md"
-                : "bg-white text-[#1b4332] border border-[#d8f3dc] rounded-bl-md"
+                ? "bg-[#2952a3] text-white rounded-br-md"
+                : "bg-[#1a3a7c] text-[#e8f0fe] border border-[#2952a3] rounded-bl-md"
             }`}
           >
             {msg.content}
